@@ -1,58 +1,59 @@
-# Reconnaissance and Nmap
+# Reconnaissance and Nmap notes
 
-Reconnaissance gathers information about an authorized target to understand its exposed attack surface. Keep scans within the scope and rate limits of the lab or engagement.
+Recon is where I start building a picture of an authorised lab target: which hosts are reachable, which ports respond and what services might be running.
 
-## Nmap basics
+## Commands I'm learning
 
 ```bash
-# Scan a lab host
-nmap 192.0.2.10
+# Basic scan of an authorised lab host
+nmap <lab-ip>
 
-# Scan selected TCP ports
-nmap -p 22,80,443 192.0.2.10
+# Scan only selected ports
+nmap -p 22,80,443 <lab-ip>
 
-# Detect service versions
-nmap -sV 192.0.2.10
+# Probe for service/version information
+nmap -sV <lab-ip>
 
-# Run default safe discovery scripts plus version detection
-nmap -sC -sV 192.0.2.10
+# Run Nmap's default NSE scripts as well
+nmap -sC -sV <lab-ip>
 
-# Scan targets listed in a file you are authorized to assess
+# Read targets from a file
 nmap -iL targets.txt
 
-# Save normal, XML, and grepable output
-nmap -oA results/lab-scan 192.0.2.10
+# Save results in normal, XML and grepable formats
+nmap -oA results/lab-scan <lab-ip>
 ```
 
-## Common options
+Only put targets in `targets.txt` if they're included in my lab scope. I should inspect what a script does before using it on a real engagement.
 
-| Option | Purpose |
+## Options I need to remember
+
+| Option | Meaning |
 |---|---|
-| `-sn` | Host discovery without port scan |
-| `-p` | Select ports |
-| `-sV` | Probe open ports for service/version |
-| `-sC` | Run default NSE scripts |
-| `-O` | OS detection (may require privileges) |
-| `-oA` | Save output in multiple formats |
+| `-sn` | Host discovery without a port scan |
+| `-p` | Choose ports |
+| `-sV` | Probe services for version information |
+| `-sC` | Run the default NSE script set |
+| `-O` | Attempt OS detection |
+| `-oA` | Save output in several formats |
 | `-iL` | Read targets from a file |
 
-## Interpret results carefully
+## Reading the result
 
-- `open`: an application is accepting connections on the port.
-- `closed`: reachable, but no application is listening.
-- `filtered`: Nmap cannot determine the state due to filtering or lack of response.
+- `open`: something is accepting connections on that port.
+- `closed`: the host responded, but no application is listening there.
+- `filtered`: filtering or lack of response stopped Nmap deciding whether it is open or closed.
 
-Version detection is an estimate. Confirm findings with service-specific evidence.
+A version string doesn't prove a vulnerability. I need to check the service and its configuration before writing a finding.
 
-## Suggested workflow
+## My scan workflow
 
-1. Confirm scope and authorization.
-2. Discover live hosts.
-3. Scan only in-scope ports.
-4. Identify services and versions.
-5. Enumerate services using appropriate safe methods.
-6. Record evidence, timestamps, and limitations.
-7. Validate findings without causing disruption.
+1. Confirm the target and allowed scope.
+2. Check whether the host is reachable.
+3. Scan the ports I need.
+4. Identify the services.
+5. Look into the services one at a time.
+6. Save the output and note anything uncertain.
 
 ## References
 
