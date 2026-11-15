@@ -1,19 +1,14 @@
-# Hack The Box Learning Notes
+# Hack The Box notes
 
-Use this directory to record HTB machine and Academy learning.
+I'll use this folder for HTB Academy modules and machine notes. I haven't written up a completed machine here yet, so this is just the checklist I want to follow.
 
-## Suggested methodology
+## Before starting
 
-1. Read the machine or module scope.
-2. Confirm VPN connectivity and routes.
-3. Perform scoped host discovery.
-4. Enumerate exposed services.
-5. Research likely weaknesses.
-6. Validate findings in the provided environment.
-7. Document access path and defensive remediation.
-8. Clean up local artifacts and stop lab instances.
+- Read the machine/module description and scope.
+- Connect to the VPN if the exercise requires it.
+- Check that the VPN interface and route are present.
 
-## Troubleshooting VPN connectivity
+Useful checks:
 
 ```bash
 ip -br addr
@@ -22,4 +17,18 @@ ip route get <lab-ip>
 ping -c 3 <lab-ip>
 ```
 
-Ping may be blocked. Check routes and test only the expected lab service if the platform permits. Never scan outside the assigned target scope.
+Ping might be blocked, so a failed ping doesn't settle whether the target is reachable.
+
+## While working
+
+1. Record the target address privately and keep to the assigned target.
+2. Do basic host and service discovery.
+3. Save scan output so I can refer back to it.
+4. Research each exposed service before trying an exploit.
+5. Keep notes on what worked, what failed and why.
+
+## Write-up reminders
+
+For each machine, I want to include the starting point, enumeration commands, important output, the reasoning behind each step, the access path, remediation and anything I still don't understand.
+
+Don't publish flags or platform answers if the rules say not to. Never scan outside the assigned scope.
