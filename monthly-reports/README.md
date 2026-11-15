@@ -1,18 +1,14 @@
-# Monthly Learning Reports
+# Monthly reviews
 
-Create one report per month using the template in `templates/MONTHLY-REVIEW.md`.
+At the end of a month I'll make a short review using [the monthly template](../templates/MONTHLY-REVIEW.md).
 
-## Historical coverage
+I want these reviews to show what I actually studied, not just how many topics I planned to cover. Useful things to look back on:
 
-The journal begins on 2026-06-01 by request. Existing conversation evidence currently supports selected cybersecurity learning topics in November 2026. It does not provide a complete day-by-day record for June through October, so those months are not populated with invented achievements.
+- Topics I spent time on
+- Labs I really completed
+- Commands and tools I used
+- One thing I understand better now
+- A problem that took time to solve
+- What I want to practise next month
 
-## Monthly report checklist
-
-- Topics studied
-- Labs completed
-- Commands and tools practiced
-- Notes added
-- Key lessons
-- Challenges and how they were resolved
-- Defensive takeaways
-- Next month's goals
+The journal start date was set to 1 June 2026, but I don't have a reliable daily record for June to October. I won't create monthly achievements for those months without evidence.
