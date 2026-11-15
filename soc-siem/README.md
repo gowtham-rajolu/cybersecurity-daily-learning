@@ -1,37 +1,41 @@
-# SOC and SIEM Fundamentals
+# SOC and SIEM — notes to work through
 
-## SOC workflow
+I want to understand the defensive side as well as pentesting. A SOC analyst needs to work out whether an alert is meaningful, what happened and what evidence supports the decision.
 
-1. Collect telemetry from endpoints, identity systems, networks, and applications.
-2. Normalize and enrich events.
-3. Detect suspicious patterns.
-4. Triage alerts using context and severity.
-5. Investigate scope, timeline, and impact.
-6. Contain and eradicate according to incident procedures.
-7. Recover, document, and improve detections.
+## Rough incident workflow
 
-## Important log sources
+1. Collect events from endpoints, identity systems, networks and applications.
+2. Put events into a format that can be searched together.
+3. Look for suspicious patterns.
+4. Triage alerts and check context.
+5. Build a timeline and work out which accounts or machines are involved.
+6. Follow the organisation's containment and response process.
+7. Record what happened and what could be improved.
 
-- Authentication events and MFA outcomes
-- Endpoint process and network telemetry
-- DNS and proxy logs
+## Logs worth learning to read
+
+- Authentication successes and failures
+- Endpoint process creation and network connections
+- DNS and proxy activity
 - Firewall and VPN events
-- Cloud audit logs
+- Cloud audit events
 - Web server and application logs
 
-## SIEM concepts
+## What a SIEM does
 
-A SIEM centralizes and correlates security events. Learn parsing, field normalization, time synchronization, detection rules, dashboards, alert severity, retention, and false-positive tuning.
+A SIEM brings security events into one place so they can be searched and correlated. The parts I need to learn include parsing, normalising fields, time zones, detection rules, alert severity, dashboards and false-positive tuning.
 
-## Example investigation questions
+## Questions I'd ask when an alert fires
 
-- Which account or host generated the event?
-- Is the source expected for this user and time?
-- What happened immediately before and after?
-- Are there related events on other systems?
-- What evidence supports benign or malicious classification?
-- What containment action is authorized?
+- Which user or host generated it?
+- Is the activity normal for that user and time?
+- What happened just before and after the event?
+- Are there related events on other machines?
+- What evidence makes this look malicious or benign?
+- What response actions am I allowed to take?
 
-## Mini-project idea
+## Small project idea
 
-Build a small defensive log-analysis pipeline using sample logs: parse events, normalize timestamps, detect repeated failed logins, produce an alert with supporting evidence, and document false-positive cases. Use synthetic or sanitized data only.
+Use synthetic or sanitised logs and write a Python script that finds repeated failed logins. For each alert, show the source, time range and matching log lines. Then test a few normal cases to see where the rule creates false positives.
+
+I haven't built this pipeline yet. This is a project I want to try after I get more comfortable reading logs.
