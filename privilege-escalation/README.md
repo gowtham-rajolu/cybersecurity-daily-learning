@@ -1,19 +1,10 @@
-# Privilege Escalation — Study Notes
+# Privilege escalation notes
 
-Privilege escalation occurs when an account or process gains permissions beyond those intended.
+Privilege escalation means getting more permissions than the account or process was meant to have. I need to learn how to spot the configuration mistakes that can make this possible, and how to fix them.
 
-## Linux enumeration concepts
+## Linux checks to understand
 
-In an authorized lab, understand how to inspect:
-- Current identity and groups
-- Operating system and kernel version
-- Running processes and services
-- File and directory permissions
-- Sudo policy
-- Scheduled tasks
-- Installed packages and exposed services
-
-Useful read-only commands:
+In an authorised lab, start by looking at the current user and the machine:
 
 ```bash
 id
@@ -25,17 +16,17 @@ systemctl --type=service --state=running
 find / -type f -perm -4000 2>/dev/null
 ```
 
-Do not assume that every SUID binary or unusual permission is exploitable. Investigate ownership, expected behavior, configuration, and version.
+Finding an unusual SUID file or a permissive sudo rule is not automatically a vulnerability. I need to understand the owner, permissions, binary, configuration and whether the behaviour can actually be abused.
 
-## Windows topics to learn
+## Windows topics on my list
 
 - Local users and groups
 - Service permissions
 - Scheduled tasks
 - Unquoted service paths
 - Token privileges
-- Patch level and security configuration
+- Patch level and security settings
 
-## Reporting
+## What a useful lab note should say
 
-For each finding, document the initial access level, the misconfiguration, evidence, impact, remediation, and cleanup. Never use these techniques on systems without permission.
+Record the initial user/permission level, the configuration issue, the evidence, what impact it could have and how an administrator should fix it. Don't include secrets or use these techniques on machines without permission.
