@@ -1,15 +1,16 @@
-# Linux for Security Practitioners
+# Linux notes for security labs
 
-## Filesystem and permissions
+I use Ubuntu for a lot of my practice, so I want to be comfortable moving around the filesystem and checking what's running before I start using security tools.
 
-- `/`: filesystem root
-- `/etc`: system configuration
-- `/var/log`: common log location
-- `/home`: user home directories
-- `/tmp`: temporary files
-- `/proc`: process and kernel information
+## Directories I should recognise
 
-Linux permissions are represented for owner, group, and others: read (r), write (w), execute (x).
+- `/etc` — system configuration
+- `/var/log` — many system and service logs
+- `/home` — user home directories
+- `/tmp` — temporary files
+- `/proc` — process and kernel information
+
+## First commands to run
 
 ```bash
 whoami
@@ -17,12 +18,23 @@ id
 pwd
 ls -la
 stat filename
+```
+
+These tell me which user I'm running as, which groups I belong to, where I am and what permissions a file has.
+
+## Permissions
+
+Linux permissions are shown for owner, group and others. The basic bits are read (`r`), write (`w`) and execute (`x`).
+
+```bash
 chmod 640 filename
 chown user:group filename
 find /var/log -type f
 ```
 
-## Processes and services
+I need to understand the effect of a permission change before running it, especially with recursive options.
+
+## Processes, services and sockets
 
 ```bash
 ps aux
@@ -32,19 +44,19 @@ journalctl -u ssh --since today
 ss -tulpn
 ```
 
-## Log review
+These help me check running processes, service state, service logs and listening ports. Some commands need elevated privileges to show all details.
 
-Review authentication and service logs using the distribution's logging setup. Common locations include `/var/log/auth.log` (Debian/Ubuntu) and `/var/log/secure` (some RHEL-based systems). Access may require elevated privileges.
+## Logs
 
-## Safe privilege model
+On Ubuntu/Debian, authentication logs are often in `/var/log/auth.log`. Some RHEL-based systems use `/var/log/secure`. The exact location depends on the distribution and logging setup.
 
-Use sudo only for tasks that require it. Understand the command before running it. Avoid piping unknown remote scripts directly into a privileged shell.
+## Things to practise
 
-## Learning checklist
+- [ ] Find a file and inspect its permissions.
+- [ ] Explain what `640` means in chmod.
+- [ ] Check which process owns a listening port.
+- [ ] Read SSH service logs.
+- [ ] Understand what `sudo -l` reports.
+- [ ] List running systemd services.
 
-- [ ] Navigate and search files
-- [ ] Explain rwx and octal permissions
-- [ ] Inspect processes and listening sockets
-- [ ] Read authentication logs
-- [ ] Explain sudo and least privilege
-- [ ] Identify systemd services
+Use sudo only when needed. Don't run a command from a tutorial as root until I understand what it changes.
