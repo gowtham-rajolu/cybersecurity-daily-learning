@@ -26,8 +26,9 @@ I don't want this to become a folder of copied definitions. The useful parts for
 - [12 Nov 2026](daily-notes/2026-11-12.md) — Web lab, file uploads, Python venv and grep
 - [13 Nov 2026](daily-notes/2026-11-13.md) — Nmap, Metasploit, Metasploitable and VPN troubleshooting
 - [15 Nov 2026](daily-notes/2026-11-15.md) — Setting up this journal and deciding how to track progress
+- [16 Nov 2026](daily-notes/2026-11-16.md) — TryHackMe UnrealIRCd backdoor lab, reverse shell troubleshooting and access verification
 
-The journal was requested to start from 1 June, but I don't have reliable notes for every day since then. I have not filled those gaps with made-up study sessions. The older dated notes here are summaries of topics visible in my learning conversations; their file dates are not proof of commits on those dates.
+The journal was requested to start from 1 June, but I don't have reliable notes for every day since then. I have not filled those gaps with made-up study sessions. The older dated notes are summaries of topics visible in my learning conversations; their file dates are not proof of commits on those dates.
 
 ## How I want to use this repo
 
@@ -42,7 +43,7 @@ I'll use the [daily note template](templates/DAILY-NOTE.md), but I don't need to
 
 ## Lab safety
 
-I will keep practice to my own machines, local vulnerable VMs and platforms where I have permission. Vulnerable VMs should stay isolated. I won't commit passwords, tokens, private keys or sensitive target information.
+I will keep practice to my own machines, local vulnerable VMs and platforms where I have permission. Vulnerable VMs should stay isolated. I won't commit passwords, tokens, private keys, hashes or sensitive target information. I also won't publish TryHackMe flags or answers where the platform's rules prohibit it.
 
 ## Folder layout
 
