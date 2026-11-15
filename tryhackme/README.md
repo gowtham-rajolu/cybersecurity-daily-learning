@@ -1,22 +1,18 @@
-# TryHackMe Learning Notes
+# TryHackMe notes
 
-This directory is for room-by-room notes from authorized TryHackMe exercises.
+This folder is for notes from rooms I actually work through. I have previously been working on a guided web pentesting exercise and asked about the upload page, Python virtual environments, VPN connectivity and grep. The recap is in [my 12 November notes](../daily-notes/2026-11-12.md).
 
-## Write-up structure
+## What I want to record for each room
 
-- Room name and date completed
-- Learning objectives
-- Lab scope and target environment
-- Concepts learned
-- Enumeration methodology
-- Commands used and why
-- Observations and evidence
-- Mistakes and troubleshooting
-- Remediation and defensive lessons
-- Questions for further study
+- Room name and the date I worked on it
+- What the room is teaching
+- Which machine or service is in scope
+- Commands I tried and what they returned
+- Where I got stuck
+- How I worked through the problem
+- What the result tells me
+- How the issue could be prevented or detected
 
-## Existing learning context
+I don't need to write a long report for every room. The important thing is to explain the steps in my own words and keep enough detail that I can repeat the learning later.
 
-Prior conversations show work on a guided web penetration-testing room, including a lab upload workflow, Python virtual environments, VPN connectivity troubleshooting, and shell/grep usage. See [2026-11-12 notes](../daily-notes/2026-11-12.md).
-
-Do not publish room flags, answers, or sensitive platform content where platform rules prohibit it. Prefer your own explanations and sanitized evidence.
+Keep credentials and sensitive target information out of the repo. Don't publish flags, answers or room content where TryHackMe rules prohibit it.
