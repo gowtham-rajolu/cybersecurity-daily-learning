@@ -1,25 +1,19 @@
-# Monthly Review — YYYY-MM
+# Monthly review — YYYY-MM
 
-## Learning summary
+A quick review of what I actually did this month.
 
-## Topics studied
+## What I studied
 
-## Labs and exercises completed
+## Labs I completed
 
-## Tools practiced
+## Commands or tools I practised
 
-## Best technical insight
+## Something that finally made sense
 
-## Challenges and troubleshooting
+## What confused me or went wrong
 
-## Defensive lessons
+## What I want to revisit
 
-## Evidence and repository links
+## Next month's focus
 
-## What remains unclear
-
-## Goals for next month
-
-## Consistency review
-
-Count only real study sessions and actual contributions. Do not manufacture activity to fill calendar gaps.
+Only count real study sessions and actual GitHub contributions. It's fine to leave sections blank; don't fill gaps just to make the month look busy.
