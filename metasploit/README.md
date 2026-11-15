@@ -1,38 +1,44 @@
-# Metasploit Framework and Metasploitable Labs
+# Metasploit and Metasploitable notes
 
-## What they are
+I asked about installing Metasploit on Ubuntu and how the framework is used. I also needed to clear up what Metasploitable actually is.
 
-- **Metasploit Framework** is a penetration-testing framework with modules for auxiliary checks, exploits, payloads, encoders, and post-exploitation workflows.
-- **Metasploitable** is an intentionally vulnerable training system. It is a target environment, not a scanning tool.
+## Framework vs target
 
-Nmap, Wireshark, Burp Suite, and Metasploit have different roles: discovery, packet analysis, web proxy/testing, and exploitation framework respectively.
+- **Metasploit Framework** is the testing framework. It has auxiliary, exploit, payload and post modules.
+- **Metasploitable** is an intentionally vulnerable machine made for practice. It is the target VM, not a tool like Nmap.
 
-## Lab safety
+The rough workflow makes more sense to me now: find a service, identify what is running, research it, then decide whether there is a safe way to validate a weakness in the lab.
 
-Run vulnerable targets in an isolated host-only or private lab network. Do not bridge them to an untrusted network or expose them to the internet. Snapshot the VM before exercises.
-
-## Basic framework orientation
+## Getting familiar with the console
 
 ```bash
 msfconsole
+```
+
+Inside the console:
+
+```text
 help
-search type:auxiliary name:scanner
+search type:auxiliary
 info <module>
 show options
 ```
 
-Only configure and run modules against explicitly authorized lab targets. Read module documentation and understand side effects before execution.
+I should read the module information and required options before running anything. A module result is not automatically proof that a system was compromised.
 
-## Learning workflow
+## Lab setup notes
 
-1. Identify a lab service using Nmap.
-2. Research the service and version.
-3. Determine whether a relevant vulnerability is present.
-4. Read the Metasploit module documentation.
-5. Validate safely in the isolated lab.
-6. Capture evidence and explain remediation.
-7. Restore the lab snapshot.
+Keep the vulnerable VM on a host-only or otherwise isolated network. Don't expose it to the public internet. Taking a VM snapshot before testing makes it easier to restore the lab afterwards.
 
-## Key distinction
+## Practice plan
 
-A vulnerability scanner or exploit module result is not automatically proof of compromise. Validate with controlled evidence and document uncertainty.
+1. Start the isolated Metasploitable VM.
+2. Confirm its lab IP from the VM/network settings.
+3. Use Nmap to identify exposed services.
+4. Research one service and understand why it might be vulnerable.
+5. Read the relevant Metasploit module documentation.
+6. Test only if the exercise is in scope.
+7. Save evidence and write down how the issue could be fixed.
+8. Restore the snapshot.
+
+I haven't recorded a successful exploit in this file. These are setup and learning notes, not a completed machine write-up.
