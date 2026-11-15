@@ -1,40 +1,31 @@
-# YYYY-MM-DD — Topic
+# YYYY-MM-DD — What I studied
 
-> Record the date you actually studied. Do not backdate Git commits or invent activity.
+Use the date of the actual study session. This is a prompt sheet, not a checklist that needs every section completed.
 
-## Objective
+## What was I trying to understand?
 
-What did I intend to learn?
+Write the question or problem in a couple of lines.
 
-## Concepts
+## Notes in my own words
 
-Explain the concepts in your own words.
+What makes sense now? What is still confusing?
 
-## Lab environment and authorization
-
-Describe the local VM, training platform, or system you own or are authorized to test. Do not include secrets or sensitive target details.
-
-## Commands and observations
+## Commands / lab steps
 
 ```bash
-# Command and its purpose
+# Add the command you actually tried
 ```
 
-Record expected and actual observations. Redact credentials, tokens, public IPs, and private data.
+What did I expect? What output did I get? If I didn't run it, say that instead of inventing output.
 
-## What I learned
+## What went wrong?
 
-- 
-- 
+Include errors, failed attempts and how I narrowed them down. Remove passwords, tokens and private target details.
 
-## Problems and troubleshooting
+## One thing I learned
 
-What failed? What evidence helped isolate the cause?
+Keep this specific. For example, explain what a command option changed or why a connection failed.
 
-## Defensive perspective
+## Next time
 
-How can this weakness be prevented, detected, or mitigated?
-
-## Next session
-
-One concrete next action.
+Write down one small thing to test or read next.
