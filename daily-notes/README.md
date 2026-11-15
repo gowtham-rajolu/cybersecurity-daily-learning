@@ -1,17 +1,19 @@
-# Daily Learning Notes
+# Daily notes
 
-Each file is a dated study record. Historical entries are included only when supported by prior learning conversations; they are not retroactive Git commits.
+This folder is for dated notes from actual study sessions. I want each entry to be useful when I come back to the topic later, so I'll include the commands I used and anything I found confusing.
 
-## Available entries
+## Entries currently in the repo
 
-- [2026-11-12](2026-11-12.md) — Web pentesting, lab workflow, grep and shell upload concepts
-- [2026-11-13](2026-11-13.md) — Nmap, Metasploit, Metasploitable, network troubleshooting
-- [2026-11-15](2026-11-15.md) — Repository setup and learning roadmap
+- [12 November 2026](2026-11-12.md) — Web lab questions, upload handling, Python venv and grep
+- [13 November 2026](2026-11-13.md) — Nmap options, Metasploit basics and VPN troubleshooting
+- [15 November 2026](2026-11-15.md) — Creating this journal
 
-## Add a new entry
+## Adding a note
 
-Copy [the daily note template](../templates/DAILY-NOTE.md), name it `YYYY-MM-DD.md`, and record only what you actually studied that day.
+Copy [the daily template](../templates/DAILY-NOTE.md) if it helps. The template is a guide, not a form I have to fill completely. A short note with a real command and its output is better than a long page of generic explanations.
 
-## Historical coverage
+Use the date I actually studied. Don't backdate commits.
 
-The requested journal start date is 2026-06-01. The currently available conversation history does not establish daily cybersecurity study activity for every day since that date. Missing dates are intentionally left unfilled rather than invented.
+## About the requested start date
+
+I asked to start tracking from 1 June 2026, but the available learning history doesn't show what I studied on every day from June to October. Those dates are left blank rather than guessed.
