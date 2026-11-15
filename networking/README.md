@@ -1,38 +1,40 @@
-# Networking for Cybersecurity
+# Networking notes
 
-## Essential concepts
+Networking is one area I need to get solid at for both pentesting and SOC work. These are the terms and commands I want to keep close while practising.
 
-- **IP address:** logical address used to identify an interface on an IP network.
-- **Subnet mask / prefix:** identifies the network portion of an address.
-- **Default gateway:** router used to reach destinations outside the local subnet.
-- **DNS:** resolves names to records such as A, AAAA, and MX.
-- **DHCP:** leases network configuration to clients.
-- **MAC address:** link-layer identifier used on a local network.
+## Addressing and routing
 
-## TCP and UDP
+- An IP address identifies an interface on an IP network.
+- A subnet prefix/mask tells me which part is the network.
+- The default gateway is where traffic goes when there isn't a more specific route.
+- DNS looks up names such as A/AAAA records.
+- DHCP gives a device its network configuration.
+- A MAC address is used at the local link layer.
 
-TCP is connection-oriented and provides ordered, reliable byte-stream delivery. UDP is connectionless and has lower protocol overhead but does not guarantee delivery or ordering.
+## TCP vs UDP
 
-## Common ports
+TCP sets up a connection and provides ordered, reliable delivery. UDP doesn't set up a connection in the same way and doesn't guarantee delivery or ordering. I shouldn't assume UDP is always faster or TCP is always safer; it depends on the application.
 
-| Port | Common service | Transport |
-|---:|---|---|
-| 20/21 | FTP data/control | TCP |
-| 22 | SSH | TCP |
-| 25 | SMTP | TCP |
-| 53 | DNS | UDP/TCP |
-| 80 | HTTP | TCP |
-| 110 | POP3 | TCP |
-| 123 | NTP | UDP |
-| 143 | IMAP | TCP |
-| 443 | HTTPS | TCP |
-| 445 | SMB | TCP |
-| 3306 | MySQL | TCP |
-| 3389 | RDP | TCP |
+## Ports worth recognising
 
-A port number alone does not prove which application is running. Verify with service detection and context.
+| Port | Common service |
+|---:|---|
+| 21 | FTP |
+| 22 | SSH |
+| 25 | SMTP |
+| 53 | DNS |
+| 80 | HTTP |
+| 110 | POP3 |
+| 123 | NTP |
+| 143 | IMAP |
+| 443 | HTTPS |
+| 445 | SMB |
+| 3306 | MySQL |
+| 3389 | RDP |
 
-## Useful Linux commands
+A port number is only a starting clue. I still need to identify the actual service.
+
+## Commands to practise on my own machine
 
 ```bash
 ip -br addr
@@ -46,21 +48,23 @@ traceroute example.com
 dig example.com
 ```
 
-## Troubleshooting sequence
+## When a lab target won't connect
 
-1. Check interface state and assigned address.
-2. Check route and default gateway.
-3. Test the gateway.
-4. Test a public IP to separate routing from DNS.
-5. Test DNS resolution.
-6. Check VPN routes, firewall rules, and service availability.
+This is the order I want to check instead of randomly changing settings:
 
-A failed ping does not automatically mean a host is offline; ICMP may be filtered.
+1. Is the network interface up and does it have an address?
+2. Is there a route to the target?
+3. Is the VPN route present if the lab needs a VPN?
+4. Can I reach the gateway?
+5. Does DNS resolve, if I'm using a hostname?
+6. Is the target service listening, and could ICMP simply be blocked?
+
+I ran into this kind of confusion with a lab VPN: the interface being UP did not by itself prove the target route was correct. A failed ping alone doesn't prove the host is offline.
 
 ## Subnetting reminder
 
-For IPv4, a /24 has 256 total addresses (traditionally 254 usable host addresses in a conventional subnet). A /26 has 64 total addresses. Network and broadcast address rules apply to ordinary IPv4 subnets.
+A normal IPv4 /24 has 256 addresses in total, usually 254 usable host addresses. A /26 has 64 addresses in total. Network and broadcast addresses are not normally assigned to hosts.
 
-## Practice
+## Next practice
 
-In an authorized lab, inspect your own interface and route table. Explain which route would be selected for a destination inside your LAN and for an internet destination.
+Check my own interface and route table, then explain which route would be used for a local destination and for an internet destination.
