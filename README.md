@@ -14,6 +14,7 @@ I don't want this to become a folder of copied definitions. The useful parts for
 | Fundamentals | CIA triad, threats, vulnerabilities and risk | [Fundamentals](fundamentals/README.md) |
 | Networking | IP addresses, subnetting, ports, DNS and routing | [Networking](networking/README.md) |
 | Linux | Permissions, processes, services and logs | [Linux](linux/README.md) |
+| Windows CLI | CMD, PowerShell, files, system details, users and networking | [Windows CLI](windows-cli/README.md) |
 | Recon | Host discovery and Nmap service enumeration | [Reconnaissance](reconnaissance/README.md) |
 | Web security | HTTP, uploads, sessions and common web flaws | [Web security](web-security/README.md) |
 | Metasploit | Understanding modules and using a safe target VM | [Metasploit](metasploit/README.md) |
@@ -51,6 +52,7 @@ I will keep practice to my own machines, local vulnerable VMs and platforms wher
 fundamentals/       basic security concepts
 networking/         TCP/IP, ports, DNS and routing
 linux/              Linux commands and administration
+windows-cli/        CMD and PowerShell fundamentals
 reconnaissance/     Nmap and enumeration
 web-security/       HTTP and web application security
 metasploit/         framework notes and lab work
@@ -72,6 +74,7 @@ resources/
 - [ ] Learn HTTP requests in Burp Suite
 - [ ] Set up and enumerate a Metasploitable VM safely
 - [ ] Learn Linux privilege-escalation checks
+- [ ] Get comfortable with Windows CLI and PowerShell enumeration
 - [ ] Start working with sample SOC logs
 - [ ] Write up complete labs with evidence and remediation
 
