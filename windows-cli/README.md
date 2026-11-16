@@ -131,7 +131,7 @@ What happened:
 ~~~powershell
 Add-Content -Path .\day1.txt -Value "Practising PowerShell."
 Copy-Item .\day1.txt .\day1-copy.txt
-Rename-Item .\day1-copy.txt -NewName .\backup.txt
+Rename-Item .\day1-copy.txt -NewName backup.txt
 New-Item -ItemType Directory -Name Archive
 Move-Item .\backup.txt .\Archive\
 Get-ChildItem -Recurse
@@ -340,8 +340,8 @@ Useful habits:
 
 ~~~powershell
 Get-Location
-Get-Command <command-name>
-Get-Help <command-name> -Examples
+Get-Command Get-ChildItem
+Get-Help Get-ChildItem -Examples
 Get-History
 ~~~
 
