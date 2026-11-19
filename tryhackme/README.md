@@ -15,6 +15,10 @@ What I verified during the session:
 
 I also learned to distinguish commands run by the local Metasploit console from commands typed into an established remote shell. See the daily note for the mistakes and follow-up topics.
 
+## Next practice session — 20 November 2026
+
+I prepared a checklist for the Basic Pentesting room. This is a plan for the next hands-on session, not a completed-room report: [20 November learning log](../daily-notes/2026-11-20.md).
+
 ## What I want to record for each room
 
 - Room name and the date I worked on it
