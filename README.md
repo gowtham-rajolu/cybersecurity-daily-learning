@@ -30,6 +30,7 @@ I don't want this to become a folder of copied definitions. The useful parts for
 - [16 Nov 2026](daily-notes/2026-11-16.md) — TryHackMe UnrealIRCd backdoor lab, reverse shell troubleshooting and access verification
 - [20 Nov 2026](daily-notes/2026-11-20.md) — Basic Pentesting preparation plan
 - [21 Nov 2026](daily-notes/2026-11-21.md) — Nmap service/version detection study note
+- [22 Nov 2026](daily-notes/2026-11-22.md) — Spoiler-free TryHackMe practice preparation
 
 The journal was requested to start from 1 June, but I don't have reliable notes for every day since then. I have not filled those gaps with made-up study sessions. The older dated notes are summaries of topics visible in my learning conversations; their file dates are not proof of commits on those dates.
 
