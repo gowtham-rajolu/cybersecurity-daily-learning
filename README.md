@@ -63,6 +63,7 @@ privilege-escalation/
 soc-siem/
 tryhackme/
 hackthebox/
+bandit/              OverTheWire Bandit level write-ups and progress
 daily-notes/        dated study notes
 monthly-reports/
 templates/
