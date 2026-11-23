@@ -20,7 +20,7 @@ I don't want this to become a folder of copied definitions. The useful parts for
 | Metasploit | Understanding modules and using a safe target VM | [Metasploit](metasploit/README.md) |
 | Privilege escalation | Linux and Windows enumeration | [Privilege escalation](privilege-escalation/README.md) |
 | SOC / SIEM | Logs, alerts and basic investigation | [SOC notes](soc-siem/README.md) |
-| Practice | TryHackMe and Hack The Box | [TryHackMe](tryhackme/README.md) · [HTB](hackthebox/README.md) |
+| Practice | TryHackMe, Hack The Box and OverTheWire Bandit | [TryHackMe](tryhackme/README.md) · [HTB](hackthebox/README.md) · [Bandit](bandit/README.md) |
 
 ## Journal entries
 
