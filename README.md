@@ -31,6 +31,9 @@ I don't want this to become a folder of copied definitions. The useful parts for
 - [20 Nov 2026](daily-notes/2026-11-20.md) — Basic Pentesting preparation plan
 - [21 Nov 2026](daily-notes/2026-11-21.md) — Nmap service/version detection study note
 - [22 Nov 2026](daily-notes/2026-11-22.md) — Spoiler-free TryHackMe practice preparation
+- [23 Nov 2026](daily-notes/2026-11-23.md) — RootMe upload behaviour and VPN routing observations
+- [24 Nov 2026](tryhackme/enumeration-and-brute-force.md) — TryHackMe Enumeration & Brute Force room notes
+- [25 Nov 2026](daily-notes/2026-11-25.md) — SSH diagnostics, Python HTTP sessions and Bandit practice planning
 
 The journal was requested to start from 1 June, but I don't have reliable notes for every day since then. I have not filled those gaps with made-up study sessions. The older dated notes are summaries of topics visible in my learning conversations; their file dates are not proof of commits on those dates.
 
