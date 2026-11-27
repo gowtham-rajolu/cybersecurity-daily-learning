@@ -19,6 +19,14 @@ I also learned to distinguish commands run by the local Metasploit console from 
 
 I prepared a checklist for the Basic Pentesting room. This is a plan for the next hands-on session, not a completed-room report: [20 November learning log](../daily-notes/2026-11-20.md).
 
+## Enumeration & Brute Force — 24 November 2026
+
+I practised web application enumeration and testing a numerical password-reset token flow using Python `requests`. The room-specific notes cover session cookies, response inspection, token formatting and defensive lessons: [Enumeration & Brute Force](enumeration-and-brute-force.md).
+
+## Speed Chatting — 28 November 2026
+
+Completed the LoveConnect / Speed Chatting web application lab. I documented Nmap service detection, Werkzeug identification, frontend route discovery, the profile-picture upload form, upload testing, the Python reverse-shell callback, root access verification and defensive takeaways: [Speed Chatting lab notes](speed-chatting.md).
+
 ## What I want to record for each room
 
 - Room name and the date I worked on it
@@ -33,7 +41,3 @@ I prepared a checklist for the Basic Pentesting room. This is a plan for the nex
 I don't need to write a long report for every room. The important thing is to explain the steps in my own words and keep enough detail that I can repeat the learning later.
 
 Keep credentials and sensitive target information out of the repo. Don't publish flags, answers or room content where TryHackMe rules prohibit it.
-
-## Enumeration & Brute Force — 24 November 2026
-
-I practised web application enumeration and testing a numerical password-reset token flow using Python `requests`. The room-specific notes cover session cookies, response inspection, token formatting and defensive lessons: [Enumeration & Brute Force](enumeration-and-brute-force.md).
